@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 55px;
+    padding-bottom: 30px;
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-2);
+    height: 60vh;
+    padding: 0px 80px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-img {
+    height: 70px;
+    width: 70px;
+    margin-top: -35px;
+  }
+  
+  .card-title {
+    font-size: xx-large;
+    margin-bottom: 25%;
+  }
+  
+  input {
+    margin: 0% 10% 10% 10%;
+    padding: 4px;
+  }
+  
+  .card-body a {
+    padding: 9px;
+    background: var(--neutral);
+    border: var(--dark-1);
+  }
+  

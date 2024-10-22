@@ -1,0 +1,26 @@
+<div class="header-container">
+  <div *ngIf="user && user.username !== ''">
+      <h5 class="card-title">Messages with user: {{user.username}}</h5>
+  </div>
+</div>
+
+<div class="messages-container">
+  <div *ngIf="messages && messages.length > 0" class="message-list">
+
+    <div [ngClass]="{'message-card': true, 'message-card-right': message.isMe, 'message-card-left': !message.isMe}" *ngFor="let message of messages">
+      <div class="message-body">
+          <p class="message-datetime">{{ formatDateTime(message.dateTime) }}</p>
+          <p class="message-content">{{ message.content }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="send-card">
+    <textarea class="form-control" [(ngModel)]="messageText" maxlength="500" placeholder="Reply..."></textarea>
+    <button class="btn btn-secondary" mat-button (click)="sendMessage()">Send</button>
+  </div>
+
+  <!--<div class="no-messages" *ngIf="!messages || messages.length === 0">
+      <p>No messages found.</p>
+  </div>-->
+</div>

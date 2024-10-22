@@ -1,0 +1,21 @@
+<!-- daily-suggestions.component.html -->
+<div class="base-container">
+    <h3>Daily Exercise Suggestions</h3>
+    
+    
+        <div class="search-container">
+            <input type="text" [(ngModel)]="muscleName" placeholder="Enter muscle name">
+            <button (click)="searchExercises()">Search</button>
+
+          </div>
+    
+  
+    <div class="card-container">
+      <div *ngFor="let exercise of exercises" class="card">
+        <h2>{{ exercise.name }}</h2>
+        <p>Level: {{ exercise.level }}</p>
+        <p>{{ exercise.instructions }}</p>
+      </div>
+    </div>
+ </div>
+  

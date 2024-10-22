@@ -1,0 +1,56 @@
+<!--<div *ngIf="subscribedCategories && subscribedCategories.length > 0; else noCategories">
+    <h3>Categories you are subscribed to: </h3>
+    <ul>
+      <li *ngFor="let category of subscribedCategories">
+        {{ category.name }}
+        <button (click)="unsubscribe(category)">Unsubscribe</button>
+      </li>
+    </ul>
+</div>
+  
+<ng-template #noCategories>
+    <p>You are not subscribed to any category.</p>
+</ng-template>
+
+<div *ngIf="otherCategories && otherCategories.length > 0">
+    <h3>Other Categories:</h3>
+    <ul>
+      <li *ngFor="let category of otherCategories">
+        {{ category.name }}
+        <button (click)="subscribe(category)">Subscribe</button>
+      </li>
+    </ul>
+</div>
+-->
+
+<div class="card">
+    <h3>Categories you are subscribed to:</h3>
+    <div *ngIf="subscribedCategories && subscribedCategories.length > 0; else noCategories">
+        <ul>
+            <li *ngFor="let category of subscribedCategories">
+                <div class="category-container">
+                    <span class="category-name">{{ category.name }}</span>
+                    <button class="btn-secondary" (click)="unsubscribe(category)">Unsubscribe</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <ng-template #noCategories>
+        <p>You are not subscribed to any category.</p>
+    </ng-template>
+</div>
+
+<div class="card">
+    <h3>Other Categories:</h3>
+    <div *ngIf="otherCategories && otherCategories.length > 0">
+        <ul>
+            <li *ngFor="let category of otherCategories">
+                <div class="category-container">
+                    <span class="category-name">{{ category.name }}</span>
+                    <button class="btn-secondary" (click)="subscribe(category)">Subscribe</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+

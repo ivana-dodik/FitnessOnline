@@ -1,0 +1,97 @@
+.header-container {
+    margin: 20px;
+}
+
+.messages-container {
+
+    width: 90%; /* Set a fixed width */
+    min-width: 800px;
+    margin: 0 auto; /* Center the container horizontally */
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.611); 
+    border-radius: 10px;
+}
+
+
+.message-list {
+    flex: 1;
+    overflow-y: auto; /* Enable scrolling for long message lists */
+}
+
+.message-card {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--light-2);
+    padding: 20px;
+    margin: 30px 10px;
+    width: 50%;
+    height: auto;
+}
+
+.message-card-right {
+    background-color: var(--dark-1); 
+    margin-left: auto; 
+}
+
+.message-card-left {
+    background-color: var(--light-2); 
+    margin-right: auto; 
+}
+
+
+.message-body {
+    min-width: 100%;
+}
+
+.message-datetime {
+    color: #888;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+
+.message-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.no-messages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    color: #888;
+}
+
+.send-card {
+    padding: 20px;
+    background-color: var(--light-2);
+    height: 50vh;
+  }
+  
+  textarea {
+    height: 90%;
+    resize: none;
+  }
+  
+  .choose-option-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  
+
+/* Media Query for Small Screens */
+@media (max-width: 576px) {
+    .message-card {
+        max-width: 90%; /* Adjust width for smaller screens */
+    }
+}

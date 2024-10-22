@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card">
+     <img class="card-img profile-image" [src]="avatarUrl" alt="Edit profile image" (click)="openImage()" />
+      <div class="card-body">
+        <h5 class="card-title">Edit profile</h5>
+        <form [formGroup]="editProfileForm" class="edit-profile-form">
+          <div class="div-container">
+            <div class="left-side-div">
+              <input type="text" required formControlName="firstName" placeholder="First name" autocomplete="off" />
+              <input type="text" required formControlName="lastName" placeholder="Last name" autocomplete="off" />
+              <input type="text" required formControlName="city" placeholder="City" autocomplete="off" />
+            </div>
+            <div class="right-side-div">
+              <input type="email" required formControlName="email" placeholder="Email" autocomplete="off" />
+              <!-- <label>Your avatar</label> -->
+              <input type="file" placeholder="Avatar" (change)="onFileSelected($event)" />
+              <button class="btn btn-primary" mat-button (click)="openModal()">
+                Change password
+              </button>
+            </div>
+          </div>
+        </form>
+        <button class="btn btn-primary" mat-button (click)="edit(editProfileForm)">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" [class.open]="isModalOpen">
+    <div class="modal-content">
+      <h3>Password change</h3>
+      <form [formGroup]="changePasswordForm" class="change-password-form" (ngSubmit)="changePassword()">
+        <input type="password" required formControlName="currentPassword" placeholder="Current password"
+          autocomplete="off" />
+        <input type="password" required formControlName="newPassword" placeholder="New password" autocomplete="off" />
+        <input type="password" required formControlName="repeatPassword" placeholder="Repeat new password"
+          autocomplete="off" />
+  
+        <button class="btn btn-primary" type="submit" mat-button>
+          Save changes
+        </button>
+        <button class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+      </form>
+    </div>
+  </div>

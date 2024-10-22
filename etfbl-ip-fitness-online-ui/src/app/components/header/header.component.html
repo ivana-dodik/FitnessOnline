@@ -1,0 +1,39 @@
+<div class="outer">
+    <h1>ETF BL IP FitenssOnline</h1>
+  
+    <!-- Navigation menu -->
+    <nav *ngIf="isSmallScreen === false">
+      <!-- <a routerLink="/news">Fitness news</a>-->
+      <a *ngIf="!isLoggedIn" routerLink="/login">Login</a>
+      <a *ngIf="!isLoggedIn" routerLink="/registration">Registration</a>
+      <a *ngIf="isLoggedIn" routerLink="/daily-suggestions">Daily suggestions</a>
+      <a routerLink="/programs">Programs</a>
+      <a *ngIf="isLoggedIn" routerLink="/contact">Contact</a>
+      <a *ngIf="isLoggedIn" routerLink="/inbox">Inbox</a>
+      <a *ngIf="isLoggedIn" routerLink="/profile">Profile</a>
+      <a *ngIf="isLoggedIn" class="logout-wide" (click)="logOut()">Logout</a>
+    </nav>
+  
+    <!-- Toggle menu -->
+    <div class="toggle-menu" *ngIf="isSmallScreen" (click)="toggleMenu()">
+      <div class="span-div">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+  
+      <!-- Link choices (to be displayed when toggle menu is clicked) -->
+    </div>
+  </div>
+  <div class="menu-links" *ngIf="isMenuOpen">
+    <!--<a routerLink="/news" (click)="isMenuOpen = false">Fitness news</a>-->
+    <a routerLink="/programs" (click)="isMenuOpen = false">Programs</a>
+    <a *ngIf="!isLoggedIn" routerLink="/login" (click)="isMenuOpen = false">Login</a>
+    <a *ngIf="!isLoggedIn" routerLink="/registration" (click)="isMenuOpen = false">Registration</a>
+    <a *ngIf="isLoggedIn" routerLink="/daily-suggestions/">Daily suggestions</a>
+    <a *ngIf="isLoggedIn" routerLink="/contact" (click)="isMenuOpen = false">Contact</a>
+    <a *ngIf="isLoggedIn" routerLink="/inbox">Inbox</a>
+    <a *ngIf="isLoggedIn" routerLink="/profile" (click)="isMenuOpen = false">Profile</a>
+    <a *ngIf="isLoggedIn" (click)="logOut()">Logout</a>
+  
+  </div>

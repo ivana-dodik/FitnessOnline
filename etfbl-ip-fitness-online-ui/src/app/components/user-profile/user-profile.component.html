@@ -1,0 +1,24 @@
+<div class="outer">
+    <nav>
+      <a class="navigation-link" routerLink="/profile/subscribe">Categories</a>
+      <a class="navigation-link" routerLink="/profile/activity-logs">Activity logs</a>
+      <a class="navigation-link" routerLink="/profile/edit">Edit profile</a>
+      <a class="navigation-link" [ngStyle]="showingActivePrograms ? { textDecoration: 'underline' } : {}" (click)="getActivePrograms()">Active programs</a>
+      <a class="navigation-link" [ngStyle]="showingInstructedPrograms ? { textDecoration: 'underline' } : {}" (click)="getInstructedPrograms()">Finished programs</a>
+      <a class="navigation-link" [ngStyle]="showingParticipatedPrograms? { textDecoration: 'underline' } : {}" (click)="getParticipatedPrograms()">Program's you participated in</a>
+    </nav>
+    <hr>
+    <div class="content">
+      <!-- items -->
+      <p *ngIf="activePrograms.length == 0 && showingActivePrograms">No active programs</p>
+      <p *ngIf="participatedPrograms.length == 0 && showingParticipatedPrograms">No participated programs</p>
+      <p *ngIf="instructedPrograms.length == 0 && showingInstructedPrograms">No finished programs</p>
+  
+      <app-items *ngIf="activePrograms.length > 0" [items]="activePrograms" [showSearch]="false" [isDeleteable]="true"
+        [canAddNew]="false"></app-items>
+      <app-items *ngIf="instructedPrograms.length > 0" [items]="instructedPrograms" [showSearch]="false"
+        [canAddNew]="false"></app-items>
+        <app-items *ngIf="participatedPrograms.length > 0" [items]="participatedPrograms" [showSearch]="false"
+          [canAddNew]="false"></app-items>
+    </div>
+  </div>

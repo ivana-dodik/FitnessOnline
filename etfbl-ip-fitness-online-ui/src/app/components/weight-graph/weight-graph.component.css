@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.date-range {
+    margin-bottom: 20px;
+}
+
+.date-label {
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.date-input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.graph-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 15px;
+}
+
+.graph-button:hover {
+    background-color: #0056b3;
+}
+
+#container {
+    min-width: 400px;
+    height: 500px;
+    margin: 20px auto;
+}

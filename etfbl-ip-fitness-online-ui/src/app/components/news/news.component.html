@@ -1,0 +1,15 @@
+<div class="base-container">
+    <h3>The latest information from the fitness world:</h3>
+    <div class="router">
+      <div class="card-container">
+        <div class="card" *ngFor="let item of feedItems">
+          <h2>{{ item.title }}</h2>
+          <p>Category: {{ item.category }}</p>
+          <p>{{ item.description }}</p>
+          <a href="{{ item.link }}">Read More</a>
+        </div>
+      </div>
+    </div>
+</div>
+  
+  

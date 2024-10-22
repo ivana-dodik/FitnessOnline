@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card">
+      <img class="card-img" src="../../../assets/user.png" alt="Login image" />
+      <div class="card-body">
+        <h5 class="card-title">User login</h5>
+        <form [formGroup]="form" class="login-form">
+          <input type="text" required formControlName="username" placeholder="Username" autocomplete="off" />
+          <input type="password" required formControlName="password" placeholder="Password" autocomplete="off" />
+        </form>
+  
+        <button class="btn btn-primary" mat-button [disabled]="form.invalid" (click)="login()">
+          Log in
+        </button>
+      </div>
+    </div>
+  </div>

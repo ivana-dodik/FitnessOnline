@@ -1,0 +1,7 @@
+{
+    "/rss": {
+      "target": "https://feeds.feedburner.com/AceFitFacts",
+      "secure": false,
+      "changeOrigin": true
+    }
+}

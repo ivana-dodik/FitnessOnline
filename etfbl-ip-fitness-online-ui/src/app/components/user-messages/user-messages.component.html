@@ -1,0 +1,38 @@
+<!--<div *ngIf="userUsernameId.length > 0"> 
+  <label for="userDropdown">Send new message to:</label>
+  <select id="userDropdown" (change)="onUserSelected($event)">
+      <option value="" disabled selected>Select user</option> 
+      <option *ngFor="let user of userUsernameId" [value]="user.id">{{ user.username }}</option>
+  </select>
+</div>-->
+
+<!--<label for="userDropdown">Send new message to:</label>
+<select [(ngModel)]="selectedUserId" (change)="viewCorrespondence(selectedUserId)">
+  <option value="" disabled selected>Select user</option> 
+  <option *ngFor="let user of userUsernameId" [value]="user.id">{{ user.username }}</option>
+</select>-->
+
+<div style="margin: 10px; display: flex; align-items: center;">
+  <label style="margin-right: 10px;">Send new message to:</label>
+  <select #dropdown style="width: 200px; margin-right: 10px;">
+    <option value="" disabled selected>Select user</option> 
+    <option *ngFor="let u of userUsernameId" [value]="u.userId">{{u.username}}</option>
+  </select>
+  <button (click)="getSelectedValue()" style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Send message</button>
+</div>
+
+
+<div *ngIf="inboxMessages && inboxMessages.length > 0">
+    <div *ngFor="let message of inboxMessages">
+      <div class="card" (click)="viewCorrespondence(message.senderId)">
+        <div class="card-body">
+          <h5 class="card-title">From: {{ message.username }}</h5>
+          <p class="card-text">{{ message.lastMessageContent }}</p>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="no-results-label" *ngIf="!inboxMessages || inboxMessages.length === 0">
+    <p>No messages in your inbox.</p>
+</div>
+  

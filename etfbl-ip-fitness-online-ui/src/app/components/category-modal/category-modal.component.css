@@ -1,0 +1,50 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--light-2);
+    padding: 10px;
+    margin: 30px 10px;
+    width: 70vw;
+    height: 70vh;
+    position: relative;
+  }
+
+  h3 {
+    font-size: xx-large;
+    margin-bottom: 20px;
+    color: var(--dark-2);
+  }
+
+  .button-container {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+  
+  
+  .btn-primary {
+    padding: 9px;
+    align-items: center;
+    border: var(--dark-1);
+    align-items: center;
+    border-radius: 20px;
+  }
+
+  .category-container {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.category-name {
+    flex: 1; /* Take up remaining space */
+    margin-right: 10px; /* Add some space between name and button */
+}

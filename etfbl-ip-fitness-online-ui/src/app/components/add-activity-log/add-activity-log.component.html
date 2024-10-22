@@ -1,0 +1,22 @@
+<div class="card">
+    <h3>Add Activity Log</h3>
+
+    <ng-container>
+        <form [formGroup]="activityLogForm" class="form">
+            <input type="text" required formControlName="exerciseType" placeholder="Exercise Type" autocomplete="off" />
+            <input type="number" required formControlName="durationMinutes" placeholder="Duration (minutes)" autocomplete="off" />
+            <input type="text" required formControlName="intensity" placeholder="Intensity" autocomplete="off" />
+            <input type="number" required formControlName="results" placeholder="Results(kg)" autocomplete="off" />
+        </form>
+
+        <div class="button-container">
+            <button class="btn btn-secondary mb-2 mb-md-0" mat-button [routerLink]="['/profile', 'activity-logs']">
+                Cancel
+            </button>
+            <button class="btn btn-primary" mat-button (click)="submitActivityLog()">
+                Add Activity Log
+            </button>
+        </div>
+    </ng-container>
+</div>
+

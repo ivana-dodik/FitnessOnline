@@ -1,0 +1,27 @@
+<!--
+<div class="container">
+    <div *ngIf="activated; else notActivated">
+      <h2>Congratulations!</h2>
+      <p>Your account has been successfully confirmed and activated.</p>
+      <button class="btn btn-primary" (click)="navigateToPrograms()">Continue</button>
+    </div>
+    <ng-template #notActivated>
+      <h2>Activation failed</h2>
+      <p>Sorry, the activation link is invalid. Please try again.</p>
+      <button class="btn btn-primary" (click)="navigateToLogin()">Go to Login</button>
+    </ng-template>
+  </div>
+-->
+  <div class="container">
+    <div *ngIf="activated">
+      <h2>Congratulations!</h2>
+      <p>Your account has been successfully confirmed and activated.</p>
+      <button class="btn btn-primary" (click)="navigateToLogin()">Log in</button>
+    </div>
+    <div *ngIf="notActivated">
+      <h2>Activation failed</h2>
+      <p>Sorry, the activation link is invalid. Please try again.</p>
+      <button class="btn btn-primary" (click)="navigateToLogin()">Go to Login</button>
+    </div>
+  </div>
+  

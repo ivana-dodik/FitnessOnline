@@ -1,0 +1,124 @@
+<div *ngIf="program" class="card outer-container">
+  <!-- Prikaz slika -->
+  <div class="carousel">
+    <img class="d-block w-100 animate-img" [src]="images[srcIndex]" />
+    <a class="carousel-control-prev" role="button" (click)="handlePrevious()">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" role="button" (click)="handleNext()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <!-- Prikaz naslova, opisa, cijene i dugme za ucestvovanje -->
+  <div class="card-body">
+    <h5 class="card-title">{{ program.title }}</h5>
+    <p class="card-text">{{ program.description }}</p>
+    <div class="buy-price-container">
+      <a *ngIf="isLoggedIn && program?.available && loggedInUser?.id != program?.instructorId" class="btn btn-primary buy-button" (click)="openModal()">Participate in program</a>
+      
+      <a *ngIf="isLoggedIn && program?.available && loggedInUser?.id === program?.instructorId" class="btn btn-primary buy-button" (click)="endProgram()">End program</a>
+
+      <div class="price-tag">
+        <span class="price">{{ program.price }}€</span>
+        <!-- <span class="price-label">Sale</span> -->
+      </div>
+    </div>
+
+    <!-- Prikaz osobina proizvoda, kategorije ... -->
+    <div class="program-attributes">
+      <div class="card">
+        <div class="card-body">
+          <div class="details">
+            <!-- -->
+            <div class="align-left">
+              <div *ngIf="category" class="center-aligned-div">
+                <div class="margin-top-5 price-tag center-aligned-div color-category">
+                  <span class="price">{{ category.name }}</span>
+                </div>
+              </div>
+              <ng-container *ngFor="let attribute of program.attributes">
+                <div *ngIf="attribute" class="center-aligned-div">
+                  <div class="margin-top-5 price-tag center-aligned-div color-attribute">
+                    <span class="price">{{ attribute.name }} : {{ attribute.value }}</span>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <!-- -->
+            <div class="align-right">
+              
+              <div *ngIf="instructor" class="center-aligned-div">
+                <div class="margin-top-5 price-tag center-aligned-div color-info">
+                  <span class="price">{{ instructor.firstName + ' ' + instructor.lastName + ' (' + instructor.username + ')'  }}</span>
+                </div>
+              </div>
+              <div *ngIf="program.contactPhone"  class="center-aligned-div">
+                <div class="margin-top-5 price-tag center-aligned-div color-info">
+                  <span class="price">{{ program.contactPhone }}</span>
+                </div>
+              </div>
+              <div *ngIf="program.location" class="center-aligned-div">
+                <div class="margin-top-5 price-tag center-aligned-div color-info">
+                  <span class="price">{{ program.location }}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odjeljak sa komentarima je jedna kartica koja sadrži puno kartica, svaka kartica je jedna poruka -->
+    <div class="card program-comment-section">
+      <label>Comments about this program</label>
+      <div *ngFor="let comment of comments" class="card single-comment-card">
+        <h6 class="card-title">{{ comment.username }}</h6>
+        <p>{{ comment.dateTime }}</p>
+        <p class="card-text">{{ comment.content }}</p>
+      </div>
+      <div *ngIf="isLoggedIn">
+        If you want, you can leave your comment below.
+      </div>
+      <div class="card single-comment-card" *ngIf="isLoggedIn">
+        <textarea class="form-control" placeholder="Comment..." [(ngModel)]="comment"></textarea>
+        <button class="btn btn-primary" mat-button (click)="leaveComment()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" [class.open]="isModalOpen">
+  <div class="modal-content">
+    <h3>Choose Payment Method</h3>
+    <ul>
+      <li [ngStyle]="creditCardSelected ? { color: 'var(--neutral)' } : {}"
+        (click)="selectPaymentMethod('CREDIT_CARD')">
+        Credit Card
+      </li>
+      <li [ngStyle]="cashSelected ? { color: 'var(--neutral)' } : {}" (click)="selectPaymentMethod('CASH')">
+        Cash
+      </li>
+      <li [ngStyle]="payPalTransferSelected ? { color: 'var(--neutral)' } : {}"
+        (click)="selectPaymentMethod('PAYPAL')">
+        PAYPAL
+      </li>
+    </ul>
+    <hr style="width: 100%">
+
+    <input [(ngModel)]="paymentDetails" type="text" *ngIf="cashSelected" placeholder="Delivery Address"
+      class="form-control">
+    <input [(ngModel)]="paymentDetails" type="text" *ngIf="creditCardSelected" placeholder="Credit Card Number"
+      class="form-control">
+    <input [(ngModel)]="paymentDetails" type="text" *ngIf="payPalTransferSelected" placeholder="Bank Account Number"
+      class="form-control">
+    <div class="modal-buttons">
+      <button *ngIf="cashSelected || creditCardSelected || payPalTransferSelected" class="button btn-primary"
+        (click)="participateInProgram()">Submit</button>
+      <button class="button btn-secondary" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>

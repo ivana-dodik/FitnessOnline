@@ -1,0 +1,102 @@
+.card {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--light-2);
+    padding: 10px;
+    width: auto;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+
+  }
+  
+  .relative {
+    position: relative;
+  }
+  
+  .buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .card-body {
+    min-width: 100%;
+  }
+  
+  .card-body a {
+    background: var(--dark-2);
+    border: var(--dark-1);
+  }
+  
+  .card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Adjust the number of lines to wrap to */
+    -webkit-box-orient: vertical;
+  }
+  
+  .btn {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .delete-button {
+    margin-left: 18%;
+  }
+  
+  .btn-secondary {
+    margin-left: 10%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 40%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.75);
+  }
+  
+  .modal.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-content {
+    background-color: var(--light-2);
+    padding: 20px;
+    border-radius: 5px;
+    color: var(--dark-2);
+  }
+  
+  .modal-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .modal-buttons button {
+    width: 40%;
+    margin: 5px;
+  }
+  
+  /* Media Query for Small Screens */
+  @media (max-width: 576px) {
+    .modal {
+      width: 80%;
+    }
+  
+    .modal-buttons button {
+      width: 80%;
+    }
+  }
+  

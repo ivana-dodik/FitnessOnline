@@ -1,0 +1,45 @@
+<div *ngIf="showSearch" class="search-bar">
+    <label class="mt-3" for="searchCriteria">&nbsp;&nbsp;&nbsp;Search Criteria:</label>
+  
+    <select id="searchCriteria" 
+      [(ngModel)]="searchCriteria" 
+      name="searchCriteria" 
+      class="btn btn-secondary dropdown-toggle"
+      (change)="handleSelectedSearchCategory($event)">
+      <option value="title">Title</option>
+      <option value="description">Description</option>
+      <option value="category">Category</option>
+    </select>
+
+    <div class="search-input-and-icon" *ngIf="!showCategoriesSelector">
+      <input type="search" [(ngModel)]="searchTerm" (input)="searchPrograms()" placeholder="Search programs"
+        class="form-control" />
+      <button type="submit" class="search-icon-btn" (submit)="searchPrograms()"></button>
+    </div>
+    <select class="search-input-and-icon btn btn-secondary dropdown-toggle select-category" *ngIf="showCategoriesSelector" (change)="filterByCategory($event)">
+      <option selected disabled [value]="null">Choose category</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+    
+</div>
+  
+<div class="container">
+  <div class="no-results-label" *ngIf="!items || items.length == 0">
+    No programs found.
+  </div>
+  <div class="card-container">
+    <div class="cards" *ngFor="let item of items | paginate: { itemsPerPage: 8, currentPage: p }">
+      <app-program-card [program]="item" [isProgramDeleteable]=isDeleteable [removeItemCallback]="removeItemCallback"></app-program-card>
+    </div>
+    <div *ngIf="isLoggedIn">
+      <div class="floating-sign" [ngStyle]="{ bottom: isAtBottom ? 15 * howClose + 'vh' : '5vh' }" title="Add new program">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-plus-circle" viewBox="0 0 16 16" routerLink="add">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <pagination-controls class="mt-3" (pageChange)="p = $event"></pagination-controls>
+</div>

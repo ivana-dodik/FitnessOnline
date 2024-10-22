@@ -1,0 +1,30 @@
+.outer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  a {
+    margin: 10px;
+    color: var(--dark-2);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    cursor: pointer;
+  }
+  
+  a.selected {
+    color: var(--neutral);
+  }
+  
+  
+  .content {
+    min-height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

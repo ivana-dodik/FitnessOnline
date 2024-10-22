@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="card">
+      <img class="card-img" src="../../../assets/user.png" alt="Registration image" />
+      <div class="card-body">
+        <h5 class="card-title">User registration</h5>
+        <form [formGroup]="form" class="login-form">
+          <div class="div-container">
+            <div class="left-side-div">
+              <input type="text" required formControlName="firstName" placeholder="First name" autocomplete="off" />
+              <input type="text" required formControlName="lastName" placeholder="Last name" autocomplete="off" />
+              <input type="text" required formControlName="city" placeholder="City" autocomplete="off" />
+  
+              <input type="text" required formControlName="username" placeholder="Username" autocomplete="off" />
+            </div>
+            <div class="right-side-div">
+              <input type="password" required formControlName="password" placeholder="Password" autocomplete="off" />
+              <input type="password" required formControlName="repeatedPassword" placeholder="Repeat password"
+                autocomplete="off" />
+              <input type="email" required formControlName="email" placeholder="Email" autocomplete="off" />
+              <input type="file" placeholder="Avatar" accept="image/*" (change)="onFileSelected($event)" />
+
+            </div>
+            <div class="captcha">
+              <p>Prove you are not a robot:</p>
+              <p>
+                <span id="firstNumber">{{ firstNumber }}</span> + 
+                <span id="secondNumber">{{ secondNumber }}</span> =
+                <input type="text" id="captchaInput" name="captchaInput" formControlName="captchaInput"/>
+              </p>
+            </div>
+          </div>
+        </form>
+        <button class="btn btn-primary" mat-button (click)="register()">
+          Register
+        </button>
+      </div>
+    </div>
+  </div>

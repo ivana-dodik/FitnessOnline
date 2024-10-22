@@ -1,0 +1,23 @@
+<div class="outer">
+	<div class="header-content">
+	  	<h1>ETF BL IP Administration</h1>
+	  	<form action="?action=logout" method="POST">
+	  		<button class="logout-button" type="submit" name="logout">Logout</button>
+	  	</form>
+  	</div>
+  	<nav class="header-nav">
+  		<script>
+  			function redirect(path) {
+  				document.getElementById('path-input').value = path;
+  				document.getElementById('redirect-hidden-form').submit();
+  			}
+  		</script>
+  		<form id="redirect-hidden-form" action="?action=redirect" method="POST">
+  			<input id="path-input" type="hidden" name="path" value="">
+  		</form>
+  		<a onclick="redirect('categories')">Categories</a>
+  		<a onclick="redirect('users')">Users</a>
+  		<a onclick="redirect('logs')">Logs</a>
+  		<a onclick="redirect('addAdvisor')">Advisors</a>
+  	</nav>
+</div>

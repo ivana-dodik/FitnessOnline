@@ -1,0 +1,13 @@
+
+<div class="container">
+    <div class="date-range">
+        <label class="date-label">From:</label>
+        <input class="date-input" type="date" [(ngModel)]="startDate">
+        <label class="date-label">To:</label>
+        <input class="date-input" type="date" [(ngModel)]="endDate">
+        <button class="graph-button" (click)="generateGraph()">Show graph</button>
+    </div>
+    <div id="container"></div>
+</div>
+
+

@@ -1,0 +1,89 @@
+<div class="card">
+    <h3>Add program</h3>
+
+    <ng-container *ngIf="currentStep === 1">
+        <form [formGroup]="firstPartForm" class="form">
+            <input class="first-part-input" type="text" required formControlName="title" placeholder="Title"
+                autocomplete="off" />
+            <label class="upload-images-label btn" for="files">{{images.length}} images selected</label>
+            <input class="upload-images" id="files" type="file" (change)="onFileSelected($event)" placeholder="Images" autocomplete="off" multiple accept="image/*" />
+        </form>
+        <div class="carousel" *ngIf="imageURLs.length > 0">
+            <img class="animate-img" [src]="imageURLs[srcIndex]" alt="Image slide" />
+            <a class="carousel-control-prev" role="button" (click)="handlePrevious()">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" role="button" (click)="handleNext()">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="button-container">
+            <button class="btn btn-secondary  mb-2 mb-md-0" mat-button routerLink="/programs">
+                Cancel
+            </button>
+            <button class="btn btn-primary" mat-button (click)="submitFirstPart()">
+                Next
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentStep === 2">
+        <form [formGroup]="secondPartForm" class="form">
+            <input type="number" required formControlName="price" placeholder="Price" autocomplete="off" />
+            <input type="text" required formControlName="location" placeholder="Location" autocomplete="off">
+            <input type="text" required formControlName="durationMinutes" placeholder="Duration (minutes)" autocomplete="off">
+            <input type="text" required formControlName="contactPhone" placeholder="Contact Phone" autocomplete="off">
+            <!-- Option selection (is program new or used)-->
+            <div class="choose-option-container">
+                <label for="difficultyLevel">Choose difficulty level: </label>
+                <select formControlName="difficultyLevel" id="difficultyLevel">
+                  <option value="BEGINNER">BEGINNER</option>
+                  <option value="INTERMEDIATE">INTERMEDIATE</option>
+                  <option value="ADVANCED">ADVANCED</option>
+                </select>
+              </div>
+            <textarea class="description-textarea" formControlName="description" maxlength="500" placeholder="Detailed program description..."></textarea>
+        </form>
+
+        <div class="button-container">
+            <button class="btn btn-secondary mb-2 mb-md-0" mat-button (click)="goBack()">
+                Go back
+            </button>
+            <button class="btn btn-primary" mat-button (click)="submitSecondPart()">
+                Next
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="currentStep === 3">
+        <form [formGroup]="thirdPartForm" class="form">
+            <span class="category-description">
+                {{ selectedCategoryName }}&nbsp;&nbsp;
+                <i class="bi bi-x reset-icon" *ngIf="thirdPartForm.value.categoryId" (click)="resetCategorySelection()"></i>
+            </span>
+            <div class="categories-select">
+                <label for="categories-select">Choose a category:&nbsp;&nbsp;</label>
+                <select formControlName="categoryId" name="categories-select" (change)="handleCategorySelect($event)">
+                    <option [value]=null disabled [selected]="!thirdPartForm.value.categoryId">Select category</option>
+                    <option *ngFor="let category of categoriesToShow" [disabled]="thirdPartForm.value.categoryId == category.id" [selected]="thirdPartForm.value.categoryId == category.id" [value]="category.id">{{ category.name }}</option>
+                </select>
+            </div>
+        </form>
+
+        <ng-container *ngFor="let attribute of attributes" class="attribute-input">
+            <div>
+                <label [for]="attribute.id + ''">{{ attribute.name }}:&nbsp;&nbsp;</label>
+                <input #attributeInput (input)="handleAttributeInput(attributeInput.value, attribute.id)" [name]="(attribute.id)">
+            </div>
+        </ng-container>
+        
+
+
+        <div class="button-container submit-button-container">
+            <button class="btn btn-primary" (click)="submitAll()">
+                Add program
+            </button>
+        </div>
+     
+    </ng-container>
+</div>
